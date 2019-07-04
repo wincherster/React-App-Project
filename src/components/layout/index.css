@@ -1,0 +1,17 @@
+.layout-warpper{
+    height: 100%;
+}
+
+
+.content {
+    height: 100%;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.info-list {
+    height: 2000px;
+}
+
