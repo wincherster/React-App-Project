@@ -22,25 +22,25 @@ const User = mongoose.model('user', new mongoose.Schema({
 //   }
 // })
 
-// 删除数据 remove(过滤条件, fn(err,doc))
-User.remove({age: 18}, function(err, doc){
-  console.log(doc);
-})
+// // 删除数据 remove(过滤条件, fn(err,doc))
+// User.remove({age: 18}, function(err, doc){
+//   console.log(doc);
+// })
 
-// 更新数据 update( 更新条件, { '$set': {...}}, fn(err,doc) )
-User.update({'user':'xiaoming'}, {'$set': {age: 26}}, function(err, doc){
-  console.log(doc);
-})
+// // 更新数据 update( 更新条件, { '$set': {...}}, fn(err,doc) )
+// User.update({'user':'xiaoming'}, {'$set': {age: 26}}, function(err, doc){
+//   console.log(doc);
+// })
 
-// 查找数据 
-// 1. 集合数组（多条）
-User.find({}, function(err,doc){
-  console.log(doc);
-})
-// 2. 单条数据（对象json）
-User.findOne({}, function(err,doc){
-  console.log(doc);
-})
+// // 查找数据 
+// // 1. 集合数组（多条）
+// User.find({}, function(err,doc){
+//   console.log(doc);
+// })
+// // 2. 单条数据（对象json）
+// User.findOne({}, function(err,doc){
+//   console.log(doc);
+// })
 
 
 
