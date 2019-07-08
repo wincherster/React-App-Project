@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 
+// 引入Button 组件
+import { Button, List } from 'antd-mobile'; 
+// 必须手动引入css样式, 但是 在package.json中配置了 plugins 后 就不需要了
+// import 'antd-mobile/dist/antd-mobile.css'; 
+
 import Layout from './components/layout';
 // 1. 使用class 类 定义组件，适合复杂组件
 class Child extends Component {
-  constructor(props){
+  constructor(props){ // 设置初始化
+    // 需要调用 super(props)
     super(props);
     this.state = {
       solders: ['和尚', '住持','方丈']
@@ -25,18 +31,34 @@ class Child extends Component {
   }
 
   render(){
-    // 结构赋值，取 state 对象中某个属性，减少写 this.state.
+    // 解构赋值，取 state 对象中某个属性，减少写 this.state.
     const {solders} = this.state;
     return (
       <div>
         <h2> 一营营长 {this.props.name}</h2>
         {/* 2. 使用箭头函数 解决this 指向 */}
-        <button onClick={ () => this.addSolder() }>新兵入伍</button>
+        {/* <button onClick={ () => this.addSolder() }>新兵入伍</button> */}
+
+        <Button type="primary" onClick={ () => this.addSolder() }>新兵入伍</Button>
         <ul>
           { solders.map( v => {
             return <li key={v}>{v}</li>
           }) }
         </ul>
+
+        <List
+          renderHeader={ () => '士兵列表'}
+        >
+          {
+            solders.map( v => {
+              return (
+                <List.Item key={v}>
+                  {v}
+                </List.Item>
+              )
+            })
+          }
+        </List>
 
 
       </div>
@@ -48,6 +70,7 @@ function Child2(props){
   return <h2>骑兵连连长{props.name}</h2>
 }
 
+// 父组件
 class App extends Component {
   constructor(props){
     super(props);
