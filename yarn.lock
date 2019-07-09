@@ -7729,10 +7729,10 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux@^4.0.1:
-  version "4.0.1"
-  resolved "https://registry.npm.taobao.org/redux/download/redux-4.0.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fredux%2Fdownload%2Fredux-4.0.1.tgz#436cae6cc40fbe4727689d7c8fae44808f1bfef5"
-  integrity sha1-Q2yubMQPvkcnaJ18j65EgI8b/vU=
+redux@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npm.taobao.org/redux/download/redux-4.0.2.tgz?cache=0&sync_timestamp=1562638288343&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fredux%2Fdownload%2Fredux-4.0.2.tgz#597cc660a99f91412e31c96c3da10ed8ace0715d"
+  integrity sha1-WXzGYKmfkUEuMclsPaEO2KzgcV0=
   dependencies:
     loose-envify "^1.4.0"
     symbol-observable "^1.2.0"
