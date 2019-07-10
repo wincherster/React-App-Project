@@ -22,13 +22,13 @@ import { createStore } from 'redux';
 
 import App from './App';
 
-import { counter } from './store/index.redux';
+import { counter, addGun } from './store/index.redux';
 
 const store = createStore( counter );
 console.log( store , 'store')
 
 function render(){
-    ReactDom.render(<App store={store}/>, document.getElementById('root'));
+    ReactDom.render(<App store={store} addGun={addGun}/>, document.getElementById('root'));
 }
 
 render();

@@ -95,17 +95,25 @@
 import React from 'react';
 
 // 1 引入 action 
-import { addGUN } from './store/index.redux'
+// import { addGUN } from './store/index.redux'
+
 
 class App extends React.Component {
+  
+  handleClick(store, action) {
+    console.log('hahahh')
+    store.dispatch(action)
+  }
+
 
   render() {
     const store = this.props.store;
+    const addGun = this.props.store;
     const num = store.getState();
     return (
       <div>
         <h2>现在有机枪 {num} 把</h2>
-        <button onClick={ () => store.dispatch(addGUN) }>申请武器</button>
+        <button onClick={ () => this.handleClick(store, addGun)  }>申请武器</button>
       </div>
       
     )
