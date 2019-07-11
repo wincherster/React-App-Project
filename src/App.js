@@ -100,20 +100,21 @@ import React from 'react';
 
 class App extends React.Component {
   
-  handleClick(store, action) {
-    console.log('hahahh')
-    store.dispatch(action)
-  }
-
-
   render() {
     const store = this.props.store;
-    const addGun = this.props.store;
+    // 2019-07-11 由于引入 store 赋值给 addGun 
+    // 导致了Actions may not have an undefined "type" property. Have you misspelled a constant?
+    const addGun = this.props.addGun;  
     const num = store.getState();
     return (
       <div>
         <h2>现在有机枪 {num} 把</h2>
-        <button onClick={ () => this.handleClick(store, addGun)  }>申请武器</button>
+      {/* 
+        要使 addGun action 生效，需要 addGun() 调用
+        不调用，需要使用异步中间件不然会报错
+        Actions must be plain objects. Use custom middleware for async actions.
+      */}
+        <button onClick={ () => store.dispatch(addGun()) }>申请武器</button>
       </div>
       
     )
