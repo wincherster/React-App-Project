@@ -94,6 +94,8 @@
 
 import React from 'react';
 
+import { Button } from 'antd-mobile';
+
 // 1 引入 action 
 // import { addGUN } from './store/index.redux'
 
@@ -102,19 +104,23 @@ class App extends React.Component {
   
   render() {
     const store = this.props.store;
-    // 2019-07-11 由于引入 store 赋值给 addGun 
+    // 2019-07-11 
+    // 由于引入 store 赋值给 addGun 
     // 导致了Actions may not have an undefined "type" property. Have you misspelled a constant?
     const addGun = this.props.addGun;  
+    const removeGun = this.props.removeGun;  
     const num = store.getState();
     return (
       <div>
         <h2>现在有机枪 {num} 把</h2>
       {/* 
+        2019-07-11
         要使 addGun action 生效，需要 addGun() 调用
         不调用，需要使用异步中间件不然会报错
         Actions must be plain objects. Use custom middleware for async actions.
       */}
-        <button onClick={ () => store.dispatch(addGun()) }>申请武器</button>
+        <Button type="primary" onClick={ () => store.dispatch(addGun()) }>申请武器</Button>
+        <Button type="warning" onClick={ () => store.dispatch(removeGun()) }>上缴武器</Button>
       </div>
       
     )
