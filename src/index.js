@@ -18,18 +18,21 @@
 
 import React from 'react';
 import ReactDom from 'react-dom';
-import { createStore } from 'redux';
+// 添加 applyMiddleware 中间件
+import { createStore, applyMiddleware } from 'redux';
+// 引入thunk 支持异步
+import thunk from 'redux-thunk' ;
 
 import App from './App';
 
-import { counter, addGun, removeGun } from './store/index.redux';
+import { counter, addGun, removeGun, addGunAsync } from './store/index.redux';
 
-const store = createStore( counter );
+const store = createStore( counter , applyMiddleware(thunk));
 
 function render(){
-    ReactDom.render(<App store={store} addGun={addGun} removeGun={removeGun}/>, document.getElementById('root'));
+    ReactDom.render(<App store={store} addGunAsync={addGunAsync} addGun={addGun} removeGun={removeGun}/>, document.getElementById('root'));
 }
 
 render();
-
+// 观察者模式 订阅render函数 store 更新的时候 触发渲染
 store.subscribe( render );

@@ -7741,6 +7741,11 @@ redux-logger@^3.0.6:
   dependencies:
     deep-diff "^0.3.5"
 
+redux-thunk@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npm.taobao.org/redux-thunk/download/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
+  integrity sha1-UcLBmhhe1Rh6qpotCLZm0NZGdiI=
+
 redux@^4.0.2:
   version "4.0.2"
   resolved "https://registry.npm.taobao.org/redux/download/redux-4.0.2.tgz?cache=0&sync_timestamp=1562638288343&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fredux%2Fdownload%2Fredux-4.0.2.tgz#597cc660a99f91412e31c96c3da10ed8ace0715d"

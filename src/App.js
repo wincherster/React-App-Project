@@ -101,7 +101,10 @@ import { Button } from 'antd-mobile';
 
 
 class App extends React.Component {
-  
+  // 暂时用不到 constructor
+  // constructor(props){
+  //   super(props);
+  // }
   render() {
     const store = this.props.store;
     // 2019-07-11 
@@ -109,6 +112,7 @@ class App extends React.Component {
     // 导致了Actions may not have an undefined "type" property. Have you misspelled a constant?
     const addGun = this.props.addGun;  
     const removeGun = this.props.removeGun;  
+    const addGunAsync = this.props.addGunAsync;  
     const num = store.getState();
     return (
       <div>
@@ -121,6 +125,9 @@ class App extends React.Component {
       */}
         <Button type="primary" onClick={ () => store.dispatch(addGun()) }>申请武器</Button>
         <Button type="warning" onClick={ () => store.dispatch(removeGun()) }>上缴武器</Button>
+
+
+        <Button type="warning" onClick={ () => store.dispatch(addGunAsync()) }>拖两天给</Button>
       </div>
       
     )
