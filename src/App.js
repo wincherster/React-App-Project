@@ -99,6 +99,9 @@ import { Button } from 'antd-mobile';
 // 1 引入 action 
 // import { addGUN } from './store/index.redux'
 
+// 20190715 连接 react-redux
+import { connect } from 'react-redux';
+import { addGun, removeGun, addGunAsync } from './store/index.redux'
 
 class App extends React.Component {
   // 暂时用不到 constructor
@@ -106,34 +109,50 @@ class App extends React.Component {
   //   super(props);
   // }
   render() {
-    const store = this.props.store;
+    // const store = this.props.store;
     // 2019-07-11 
     // 由于引入 store 赋值给 addGun 
     // 导致了Actions may not have an undefined "type" property. Have you misspelled a constant?
-    const addGun = this.props.addGun;  
-    const removeGun = this.props.removeGun;  
-    const addGunAsync = this.props.addGunAsync;  
-    const num = store.getState();
+    // const addGun = this.props.addGun;  
+    // const removeGun = this.props.removeGun;  
+    // const addGunAsync = this.props.addGunAsync;  
+    // const num = store.getState();
+    // const num = this.props.num;
     return (
       <div>
-        <h2>现在有机枪 {num} 把</h2>
+        {/* <h2>现在有机枪 {num} 把</h2> */}
+        <h2>现在有机枪 {this.props.num} 把</h2>
       {/* 
         2019-07-11
         要使 addGun action 生效，需要 addGun() 调用
         不调用，需要使用异步中间件不然会报错
         Actions must be plain objects. Use custom middleware for async actions.
       */}
-        <Button type="primary" onClick={ () => store.dispatch(addGun()) }>申请武器</Button>
+        {/* <Button type="primary" onClick={ () => store.dispatch(addGun()) }>申请武器</Button>
         <Button type="warning" onClick={ () => store.dispatch(removeGun()) }>上缴武器</Button>
+        <Button type="warning" onClick={ () => store.dispatch(addGunAsync()) }>拖两天给</Button> */}
 
-
-        <Button type="warning" onClick={ () => store.dispatch(addGunAsync()) }>拖两天给</Button>
+        {/* 改造后 */}
+        {/* <Button type="primary" onClick={ addGun }>申请武器</Button>
+        <Button type="warning" onClick={ removeGun }>上缴武器</Button>
+        <Button type="warning" onClick={ addGunAsync }>拖两天给</Button> */}
+        {/* 
+          直接使用 this.props
+        */}
+        <Button type="primary" onClick={ this.props.addGun }>申请武器</Button>
+        <Button type="warning" onClick={ this.props.removeGun }>上缴武器</Button>
+        <Button type="warning" onClick={ this.props.addGunAsync }>拖两天给</Button>
       </div>
-      
     )
   }
 }
 
+// 
+const mapStatetoProps = (state) => {
+  return { num: state}
+}
+const actionCreators = { addGun, removeGun, addGunAsync }
+App = connect( mapStatetoProps, actionCreators )(App);
 
 
 export default App;

@@ -23,16 +23,31 @@ import { createStore, applyMiddleware } from 'redux';
 // 引入thunk 支持异步
 import thunk from 'redux-thunk' ;
 
+// 20190715 使用react-redux
+import { Provider } from 'react-redux';
+
 import App from './App';
 
-import { counter, addGun, removeGun, addGunAsync } from './store/index.redux';
+// import { counter, addGun, removeGun, addGunAsync } from './store/index.redux';
+// 简化后
+import { counter } from './store/index.redux';
 
 const store = createStore( counter , applyMiddleware(thunk));
 
-function render(){
-    ReactDom.render(<App store={store} addGunAsync={addGunAsync} addGun={addGun} removeGun={removeGun}/>, document.getElementById('root'));
-}
+// 使用 react-redux 前
+// function render(){
+//     ReactDom.render(<App store={store} addGunAsync={addGunAsync} addGun={addGun} removeGun={removeGun}/>, document.getElementById('root'));
+// }
+// render();
+// // 观察者模式 订阅render函数 store 更新的时候 触发渲染
+// store.subscribe( render );
 
-render();
-// 观察者模式 订阅render函数 store 更新的时候 触发渲染
-store.subscribe( render );
+//  20190715 使用 react-redux 后
+ReactDom.render(
+    (
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    ),
+    document.getElementById('root')
+);

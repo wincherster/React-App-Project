@@ -21,14 +21,12 @@ export function addGun(){
 export function removeGun(){
   return { type: REMOVE_GUN }
 }
-// 使用异步的方式
+// 使用异步的方式 创建action
 export function addGunAsync(){
-
   // 可返回 执行函数
   return dispatch => {
     setTimeout (()=>{
       dispatch( addGun() )
-
     }, 2000)
   }
 }
