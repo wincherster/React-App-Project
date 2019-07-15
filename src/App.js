@@ -103,6 +103,21 @@ import { Button } from 'antd-mobile';
 import { connect } from 'react-redux';
 import { addGun, removeGun, addGunAsync } from './store/index.redux'
 
+// 返回 num 变量
+// const mapStatetoProps = (state) => {
+//   return { num: state}
+// }
+// const actionCreators = { addGun, removeGun, addGunAsync }
+// App = connect( mapStatetoProps, actionCreators )(App); // 装饰器的写法
+
+// 20190715 新的 plugins 写法, 简化上面的写法
+@connect(
+  state => ({num: state }), // 需要什么属性，引入
+  { addGun, removeGun, addGunAsync }, // 需要什么方法，引入，自动会dispatch
+  // mapStatetoProps, 
+  // actionCreators
+)
+
 class App extends React.Component {
   // 暂时用不到 constructor
   // constructor(props){
@@ -147,12 +162,7 @@ class App extends React.Component {
   }
 }
 
-// 
-const mapStatetoProps = (state) => {
-  return { num: state}
-}
-const actionCreators = { addGun, removeGun, addGunAsync }
-App = connect( mapStatetoProps, actionCreators )(App);
+
 
 
 export default App;
