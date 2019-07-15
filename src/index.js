@@ -26,7 +26,7 @@ import thunk from 'redux-thunk' ;
 // 20190715 使用react-redux
 import { Provider } from 'react-redux';
 // 20150715 使用react-router4
-import { BrowserRouter, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Route, Link, Redirect, Switch} from 'react-router-dom';
 
 import App from './App';
 
@@ -52,6 +52,16 @@ function Child2 () {
     return <h1>Child2</h1>
 }
 
+class Test extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    render(){
+        console.log(this.props, 'location')
+        return <h1>Test 组件</h1>
+    }
+}
+
 //  20190715 使用 react-redux 后
 ReactDom.render(
     (
@@ -70,12 +80,22 @@ ReactDom.render(
                         <li>
                             <Link to="/child2">child2</Link>
                         </li>
+                        <li>
+                            <Link to="/:location">child2</Link>
+                        </li>
 
                     </ul>
-                    {/* 3 Route 匹配路由组件， exact 完全匹配路由， 因为路由采用正则匹配的方式 */}
-                    <Route path="/" exact component={App}></Route>
-                    <Route path="/child1" component={Child1}></Route>
-                    <Route path="/child2" component={Child2}></Route>
+                    {/* 20190715 使用Switch 组件匹配 ， 只渲染匹配的 第一个组件*/}
+                    <Switch>
+                         {/* 3 Route 匹配路由组件， exact 完全匹配路由， 因为路由采用正则匹配的方式 */}
+                        <Route path="/" exact component={App}></Route>
+                        <Route path="/child1" component={Child1}></Route>
+                        <Route path="/child2" component={Child2}></Route>
+                        <Route path="/:location" component={Test}></Route>
+                        {/* 没有匹配路由，重定向到首页 */}
+                        {/* <Redirect to="/"></Redirect> */}
+                    </Switch>
+                   
                 </div>
                 {/* <App/> */}
             </BrowserRouter>
