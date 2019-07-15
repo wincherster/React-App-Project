@@ -25,6 +25,8 @@ import thunk from 'redux-thunk' ;
 
 // 20190715 使用react-redux
 import { Provider } from 'react-redux';
+// 20150715 使用react-router4
+import { BrowserRouter, Route, Link } from 'react-router-dom';
 
 import App from './App';
 
@@ -42,11 +44,41 @@ const store = createStore( counter , applyMiddleware(thunk));
 // // 观察者模式 订阅render函数 store 更新的时候 触发渲染
 // store.subscribe( render );
 
+// 0 准备渲染组件
+function Child1 () {
+    return <h1>Child1</h1>
+}
+function Child2 () {
+    return <h1>Child2</h1>
+}
+
 //  20190715 使用 react-redux 后
 ReactDom.render(
     (
         <Provider store={store}>
-            <App/>
+            {/* 1 包裹所有组件 */}
+            <BrowserRouter>
+                <div>
+                    <ul>
+                        <li>
+                            {/* 2. 使用Link 完成跳转 */}
+                            <Link to="/">App</Link>
+                        </li>
+                        <li>
+                            <Link to="/child1">child1</Link>
+                        </li>
+                        <li>
+                            <Link to="/child2">child2</Link>
+                        </li>
+
+                    </ul>
+                    {/* 3 Route 匹配路由组件， exact 完全匹配路由， 因为路由采用正则匹配的方式 */}
+                    <Route path="/" exact component={App}></Route>
+                    <Route path="/child1" component={Child1}></Route>
+                    <Route path="/child2" component={Child2}></Route>
+                </div>
+                {/* <App/> */}
+            </BrowserRouter>
         </Provider>
     ),
     document.getElementById('root')

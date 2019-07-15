@@ -108,7 +108,10 @@
     "plugins": [
       [
         "import",
-        { "libraryName": "antd-mobile", "style": "css" }
+        {
+          "libraryName": "antd-mobile",
+          "style": "css"
+        }
       ],
       "transform-decorators-legacy"
     ]
