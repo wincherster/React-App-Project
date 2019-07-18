@@ -28,13 +28,22 @@ import { Provider } from 'react-redux';
 // 20150715 使用react-router4
 import { BrowserRouter, Route, Link, Redirect, Switch} from 'react-router-dom';
 
-import App from './App';
+// import App from './App'; // 20190718 抽离到 dashboard 中
 
 // import { counter, addGun, removeGun, addGunAsync } from './store/index.redux';
 // 简化后
 import { counter } from './store/index.redux';
 
-const store = createStore( counter , applyMiddleware(thunk));
+// 20190718 引入 auth 和 dashboard 组件
+import Auth from './pages/auth';
+import DashBoard from './pages/dashBoard';
+
+const store = createStore( 
+    counter , 
+    applyMiddleware(thunk)
+    // react 开发调试工具
+    // window.devToolsExtension ? window.devToolsExtension() : f => f
+);
 
 // 使用 react-redux 前
 // function render(){
@@ -45,12 +54,12 @@ const store = createStore( counter , applyMiddleware(thunk));
 // store.subscribe( render );
 
 // 0 准备渲染组件
-function Child1 () {
-    return <h1>Child1</h1>
-}
-function Child2 () {
-    return <h1>Child2</h1>
-}
+// function Child1 () {
+//     return <h1>Child1</h1>
+// }
+// function Child2 () {
+//     return <h1>Child2</h1>
+// }
 
 class Test extends React.Component {
     constructor(props){
@@ -61,6 +70,8 @@ class Test extends React.Component {
         return <h1>Test 组件</h1>
     }
 }
+// 20190718 采用router + redux来管理路由
+
 
 //  20190715 使用 react-redux 后
 ReactDom.render(
@@ -68,10 +79,19 @@ ReactDom.render(
         <Provider store={store}>
             {/* 1 包裹所有组件 */}
             <BrowserRouter>
-                <div>
-                    <ul>
-                        <li>
+                {/* 20190718 优化路由匹配 */}
+                <Switch>
+                    <Route path="/login" component={Auth}></Route>
+                    <Route path="/dashboard" component={DashBoard}></Route>
+                    {/* 默认去用户面板 */}
+                    <Redirect to="/dashboard"></Redirect>
+                </Switch>
+
+                {/* 20190718 抽离 到 dashBoard */}
+                {/* <div> */}
                             {/* 2. 使用Link 完成跳转 */}
+                    {/* <ul>
+                        <li>
                             <Link to="/">App</Link>
                         </li>
                         <li>
@@ -84,19 +104,19 @@ ReactDom.render(
                             <Link to="/:location">child2</Link>
                         </li>
 
-                    </ul>
+                    </ul> */}
                     {/* 20190715 使用Switch 组件匹配 ， 只渲染匹配的 第一个组件*/}
-                    <Switch>
+                    {/* <Switch> */}
                          {/* 3 Route 匹配路由组件， exact 完全匹配路由， 因为路由采用正则匹配的方式 */}
-                        <Route path="/" exact component={App}></Route>
+                        {/* <Route path="/" exact component={App}></Route>
                         <Route path="/child1" component={Child1}></Route>
                         <Route path="/child2" component={Child2}></Route>
-                        <Route path="/:location" component={Test}></Route>
+                        <Route path="/:location" component={Test}></Route> */}
                         {/* 没有匹配路由，重定向到首页 */}
                         {/* <Redirect to="/"></Redirect> */}
-                    </Switch>
+                    {/* </Switch> */}
                    
-                </div>
+                {/* </div> */}
                 {/* <App/> */}
             </BrowserRouter>
         </Provider>
