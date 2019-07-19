@@ -19,7 +19,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 // 添加 applyMiddleware 中间件
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 // 引入thunk 支持异步
 import thunk from 'redux-thunk' ;
 
@@ -32,18 +32,20 @@ import { BrowserRouter, Route, Link, Redirect, Switch} from 'react-router-dom';
 
 // import { counter, addGun, removeGun, addGunAsync } from './store/index.redux';
 // 简化后
-import { counter } from './store/index.redux';
+// import { counter } from './store/index.redux'; // 20190718 从index 中移除
+import reducers from './store/reducer'; // 20190718 使用reducers 替换 counter
 
 // 20190718 引入 auth 和 dashboard 组件
 import Auth from './pages/auth';
 import DashBoard from './pages/dashBoard';
 
 const store = createStore( 
-    counter , 
+    // counter , 
+    reducers , compose(
     applyMiddleware(thunk)
     // react 开发调试工具
     // window.devToolsExtension ? window.devToolsExtension() : f => f
-);
+));
 
 // 使用 react-redux 前
 // function render(){
