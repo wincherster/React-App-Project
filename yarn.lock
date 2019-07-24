@@ -935,8 +935,8 @@ babel-plugin-transform-class-properties@6.24.1:
 
 babel-plugin-transform-decorators-legacy@^1.3.5:
   version "1.3.5"
-  resolved "https://registry.npm.taobao.org/babel-plugin-transform-decorators-legacy/download/babel-plugin-transform-decorators-legacy-1.3.5.tgz#0e492dffa0edd70529072887f8aa86d4dd8b40a1"
-  integrity sha1-Dkkt/6Dt1wUpByiH+KqG1N2LQKE=
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-decorators-legacy/-/babel-plugin-transform-decorators-legacy-1.3.5.tgz#0e492dffa0edd70529072887f8aa86d4dd8b40a1"
+  integrity sha512-jYHwjzRXRelYQ1uGm353zNzf3QmtdCfvJbuYTZ4gKveK7M9H1fs3a5AKdY1JUDl0z97E30ukORW1dzhWvsabtA==
   dependencies:
     babel-plugin-syntax-decorators "^6.1.18"
     babel-runtime "^6.2.0"
