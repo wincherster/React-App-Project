@@ -98,10 +98,13 @@ import { addGun, removeGun, addGunAsync } from './store/index.redux'
     Objects are not valid as a React child (found: object with keys {counter, auth}). 
     If you meant to render a collection of children, use an array instead.
 
-    原因是 state的返回值，写成了  { num: state } .但是 state 这个变量未定义
+    对象作为 React 子级无效(找到:具有键 [计数器,auth] 的对象)。
+    如果要呈现子项集合,请使用数组。
+
+    原因是 state的返回值，写成了  { num: state } .但是 state 这个变量未定义，并不是很正确！
   */
-  state => ({num: 10 }), // 需要什么属性，引入
-  { addGun, removeGun, addGunAsync }, // 需要什么方法，引入，自动会dispatch
+  state => ({num: state }), // 需要什么属性，引入
+  // { addGun, removeGun, addGunAsync }, // 需要什么方法，引入，自动会dispatch
   // mapStatetoProps, 
   // actionCreators
 )
