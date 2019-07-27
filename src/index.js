@@ -46,6 +46,7 @@ const store = createStore(
     // react 开发调试工具
     // window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
+console.log(store.getState());
 
 // 使用 react-redux 前
 // function render(){
@@ -63,15 +64,16 @@ const store = createStore(
 //     return <h1>Child2</h1>
 // }
 
-class Test extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    render(){
-        console.log(this.props, 'location')
-        return <h1>Test 组件</h1>
-    }
-}
+// 20190718 不需要，可以删掉
+// class Test extends React.Component {
+//     constructor(props){
+//         super(props);
+//     }
+//     render(){
+//         console.log(this.props, 'location')
+//         return <h1>Test 组件</h1>
+//     }
+// }
 // 20190718 采用router + redux来管理路由
 
 
