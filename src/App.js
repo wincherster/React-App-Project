@@ -97,8 +97,11 @@ import { addGun, removeGun, addGunAsync } from './store/index.redux'
     2019-07-24 解决报错问题 
     Objects are not valid as a React child (found: object with keys {counter, auth}). 
     If you meant to render a collection of children, use an array instead.
+    ----
+    对象无效作为React子对象（找到：具有键{counter，auth}的对象）。
+    如果您要渲染子集合，请使用数组。
 
-    原因是 state的返回值，写成了  { num: state } .但是 state 这个变量未定义
+    原因是 state的返回值，写成了  { num: state } .但是 state 这个变量未定义, 该原因未必正确~
   */
   state => ({num: 10 }), // 需要什么属性，引入
   { addGun, removeGun, addGunAsync }, // 需要什么方法，引入，自动会dispatch
