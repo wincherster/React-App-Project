@@ -26,7 +26,7 @@ import thunk from 'redux-thunk' ;
 // 20190715 使用react-redux
 import { Provider } from 'react-redux';
 // 20150715 使用react-router4
-import { BrowserRouter, Route, Link, Redirect, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Redirect, Switch} from 'react-router-dom';
 
 // import App from './App'; // 20190718 抽离到 dashboard 中
 

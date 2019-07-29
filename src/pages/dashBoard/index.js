@@ -25,9 +25,9 @@ function Child2 () {
 // 
 class DashBoard extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
 
   render() {
     // match
