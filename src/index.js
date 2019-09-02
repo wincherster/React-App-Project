@@ -39,6 +39,8 @@ import reducers from './store/reducer'; // 20190718 使用reducers 替换 counte
 import Auth from './pages/auth';
 import DashBoard from './pages/dashBoard';
 
+import './api'
+
 const store = createStore( 
     // counter , 
     reducers , compose(
