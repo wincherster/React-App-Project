@@ -34,21 +34,24 @@ import { BrowserRouter, Route, Link, Redirect, Switch} from 'react-router-dom';
 // 简化后
 // import { counter } from './store/index.redux'; // 20190718 从index 中移除
 import reducers from './store/reducer'; // 20190718 使用reducers 替换 counter
+import './api'; // 20190902 axios拦截器配置
 
 // 20190718 引入 auth 和 dashboard 组件
 import Auth from './pages/auth';
 import DashBoard from './pages/dashBoard';
 
-import './api'
+// 20190904 登录注册组件
+import Login from './pages/login/index.js';
+import Register from './pages/register/index.js'
 
 const store = createStore( 
     // counter , 
-    reducers , compose(
+    reducers , 
+    compose(
     applyMiddleware(thunk)
     // react 开发调试工具
     // window.devToolsExtension ? window.devToolsExtension() : f => f
 ));
-console.log(store.getState());
 
 // 使用 react-redux 前
 // function render(){
@@ -79,19 +82,31 @@ console.log(store.getState());
 // 20190718 采用router + redux来管理路由
 
 
+
+
+
 //  20190715 使用 react-redux 后
 ReactDom.render(
     (
         <Provider store={store}>
             {/* 1 包裹所有组件 */}
             <BrowserRouter>
+
+                {/* 20190904 登录注册 */}
+
+                <div>
+                    <Route path="/login" component={Login}></Route>
+                    <Route path="/register" component={Register}></Route>
+                </div>
+
+
+
                 {/* 20190718 优化路由匹配 */}
-                <Switch>
+                {/* <Switch>
                     <Route path="/login" component={Auth}></Route>
                     <Route path="/dashboard" component={DashBoard}></Route>
-                    {/* 默认去用户面板 */}
                     <Redirect to="/dashboard"></Redirect>
-                </Switch>
+                </Switch> */}
 
                 {/* 20190718 抽离 到 dashBoard */}
                 {/* <div> */}
