@@ -41,8 +41,9 @@ import Auth from './pages/auth';
 import DashBoard from './pages/dashBoard';
 
 // 20190904 登录注册组件
-import Login from './pages/login/index.js';
-import Register from './pages/register/index.js'
+import Login from './pages/login';
+import Register from './pages/register'
+import AuthRoute from './components/authRoute'
 
 const store = createStore( 
     // counter , 
@@ -95,6 +96,7 @@ ReactDom.render(
                 {/* 20190904 登录注册 */}
 
                 <div>
+                    <AuthRoute></AuthRoute>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/register" component={Register}></Route>
                 </div>
