@@ -2,6 +2,14 @@ import React from 'react';
 import Logo from '../../components/logo'
 import './index.css'
 import { List, InputItem, Button, WhiteSpace, Radio, WingBlank} from 'antd-mobile';
+
+import {connect} from 'react-redux'
+import {register} from '../../store/user.redux'
+
+@connect(
+  state => state.user,
+  {register}
+)
 class Register extends React.Component {
   constructor(props){
     super();
@@ -10,6 +18,9 @@ class Register extends React.Component {
       pwd: '',
       repeatpwd: '',
       type: 'genius'
+
+      // 2020-05-29 使用bind 性能会好一些
+      // this.handleRegister = this.handleRegister.bind(this)
     }
   }
   check(type) {
@@ -23,10 +34,11 @@ class Register extends React.Component {
     })
   }
 
+  // handleRegister() {
   register() {
     console.log('register Click', this.state)
     // 请求api
-    
+    this.props.register(this.state)
   }
 
   handleChange(key, val) {
@@ -44,17 +56,22 @@ class Register extends React.Component {
         <Logo></Logo>
         <div className="register-form">
         <List>
+          {
+            this.props.msg ? <p className="error-msg">{this.props.msg}</p> : <p></p>
+          }
             <InputItem
               onChange={
                 v=> this.handleChange('user', v)
               }
             placeholder="请输入用户名" clear>用户名</InputItem>
             <InputItem 
+              type="password"
               onChange={
                 v=> this.handleChange('pwd', v)
               }
             placeholder="请输入密码" clear>密码</InputItem>
             <InputItem 
+              type="password"
               onChange={
                 v=> this.handleChange('repeatpwd', v)
               }

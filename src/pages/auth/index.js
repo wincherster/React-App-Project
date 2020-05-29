@@ -45,7 +45,7 @@ class Auth extends React.Component {
         <h2>你没有权限，需要登录才能看</h2>
 
         <button onClick={ this.props.login }>登录</button>
-
+        测试无线键盘使用感受  基督教的角度讲的亟待解决大法兰克京东方可敬的看见
       </div>
       // <div className="auth-wrap">
       //   auth page
