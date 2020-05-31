@@ -89,6 +89,8 @@ class Register extends React.Component {
           </List>
           <WhiteSpace></WhiteSpace>
           <Button type="primary" onClick={() => this.register()}>注册</Button>
+
+          <div onClick={ () => this.toRegister()}>已有账号，去登录</div>
           
         </div>
       </div>
