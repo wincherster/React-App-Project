@@ -47,10 +47,14 @@ class Register extends React.Component {
     })
   }
 
+  toLogin () {
+    this.props.history.push('/login')
+  }
+
   render() {
     // 2019-09-05 使用方式
     const RadioItem = Radio.RadioItem;
-
+    
     return (
       <div className="register-wrap">
         <Logo></Logo>
@@ -90,7 +94,7 @@ class Register extends React.Component {
           <WhiteSpace></WhiteSpace>
           <Button type="primary" onClick={() => this.register()}>注册</Button>
 
-          <div onClick={ () => this.toRegister()}>已有账号，去登录</div>
+          <div className="to_login" onClick={ () => this.toLogin()}>已有账号，去登录</div>
           
         </div>
       </div>

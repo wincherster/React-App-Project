@@ -19,7 +19,7 @@ class Login extends React.Component {
           <WhiteSpace></WhiteSpace>
           <Button type="primary">登录</Button>
           <WhiteSpace></WhiteSpace>
-          <Button type="primary" onClick={ () => this.toRegister()}>注册</Button>
+          <div className="to_register" onClick={ () => this.toRegister()}>还没有账号，去注册</div>
         </div>
       </div>
     )
